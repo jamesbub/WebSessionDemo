@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="ignite.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
+        <property name="cacheConfiguration">
+            <list>
+                               
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+				<property name="name" value="web-session-cache" />
+				
+				<property name="dataRegionName" value="External_Region"/>
+			</bean>
+            </list>
+        </property>
+        
+       
+	
+	<property name="dataStorageConfiguration">
+			<bean class="org.apache.ignite.configuration.DataStorageConfiguration">
+				<property name="dataRegionConfigurations">
+					<list>
+						<!-- Defining a data region that will consume up to 5 GB of RAM. -->
+						<bean class="org.apache.ignite.configuration.DataRegionConfiguration">
+							<!-- region name. -->
+							<property name="name" value="External_Region" />
+		
+							<!-- 500 MB initial size (RAM). -->
+							<property name="initialSize" value="#{500L * 1024 * 1024}" />
+		
+							<!-- 5 GB maximum size (RAM). -->
+							<property name="maxSize" value="#{5L * 1024 * 1024 * 1024}" />
+		
+							<!-- Enabling RANDOM_2_LRU eviction for this region. -->
+							<property name="pageEvictionMode" value="RANDOM_2_LRU" />
+						</bean>
+					</list>
+				</property>
+			</bean>
+		</property>
+
+		<property name="discoverySpi">
+			<bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+
+				<!-- Setting up IP finder for this cluster -->
+				<property name="ipFinder">
+					<bean
+						class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">
+						<property name="addresses">
+
+							<!-- 1 : Port ranges could be blocked by FireWall, choose different 
+								port range if needed 2 : For single instance cluster pass jvm argument VM_IP_ADDRESS 
+								as only ip with no port range, eg: -DVM_IP_ADDRESS=127.0.0.1 -->
+
+							<bean class="org.springframework.util.StringUtils"
+								factory-method="commaDelimitedListToSet">
+								<constructor-arg type="java.lang.String"
+									value="127.0.0.1:47500..47520" />
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</property>
+
+	</bean>
+</beans>
