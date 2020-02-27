@@ -1,3 +1,4 @@
-FROM tomcat:8.0.20-jre8
-# Coping to server
-COPY target/webSession*.war /usr/local/tomcat/webapps/webSession.war
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} webSession.jar
+ENTRYPOINT ["java","-jar","/webSession.jar"]
