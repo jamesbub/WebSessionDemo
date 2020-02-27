@@ -5,7 +5,7 @@
   <groupId>com.ignite.demo</groupId>
   <artifactId>webSession</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <name>webSession</name>
   <url>http://maven.apache.org</url>
