@@ -5,7 +5,7 @@
   <groupId>com.ignite.demo</groupId>
   <artifactId>webSession</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>webSession</name>
   <url>http://maven.apache.org</url>
@@ -16,7 +16,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.test.skip>true</maven.test.skip>
 		<jacoco.version>0.7.5.201505241946</jacoco.version>
-		<ignite.version>2.7.0</ignite.version>
+		<ignite.version>2.7.6</ignite.version>
 		<h2.version>1.4.197</h2.version>
 	</properties>
 	
@@ -90,6 +90,11 @@
 			<groupId>org.apache.ignite</groupId>
 			<artifactId>ignite-aws</artifactId>
 			<version>${ignite.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.ignite</groupId>
+		    <artifactId>ignite-rest-http</artifactId>
+		    <version>${ignite.version}</version>
 		</dependency>
     </dependencies>
 

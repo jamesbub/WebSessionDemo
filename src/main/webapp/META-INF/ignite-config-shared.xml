@@ -12,7 +12,9 @@
                                
                 <bean class="org.apache.ignite.configuration.CacheConfiguration">
 				<property name="name" value="web-session-cache" />
-				
+				<property name="cacheMode" value="REPLICATED" />
+				<property name="atomicityMode" value="ATOMIC" />
+				<property name="backups" value="1" />
 				<property name="dataRegionName" value="External_Region"/>
 			</bean>
             </list>
