@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class IgniteConfig {
 	
-	@Bean
+	/*@Bean
 	public ServletListenerRegistrationBean<ServletContextListener> igniteServletContextListenerRegistrationBean() {
 		ServletListenerRegistrationBean<ServletContextListener> bean = new ServletListenerRegistrationBean<ServletContextListener>();
 		bean.setListener(new ServletContextListenerStartup());
@@ -28,6 +28,6 @@ public class IgniteConfig {
 			//bean.addInitParameter("IgniteWebSessionsCacheName", "web-session-cache");
 			return bean;
 		}
-		
+		*/
 		
 }
